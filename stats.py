@@ -9,6 +9,7 @@ MAX_TIME_DELTA_MS = 4 * 60 * 60 * 1000
 
 if len(sys.argv) != 2:
     print("usage: ./stats.py /path/to/message.json")
+    sys.exit(0)
 
 data = json.loads(open(sys.argv[1]).read())
 msgs = data["messages"]
@@ -51,4 +52,4 @@ def reply(input):
                 #return msg.get("content")
 
 while(True):
-    print(reply(input()))
+    print(reply(input())) #TODO: serverify for tmrw
