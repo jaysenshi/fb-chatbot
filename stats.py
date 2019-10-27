@@ -103,7 +103,7 @@ def reply(input):
                             # get the message block that corresponds to this matched message
                             msg_block = []
                             
-                            next_msg = msgs[i + j + k]
+                            next_msg = msgs[i + j]
                             next_content = None
                             k = 0
                             
