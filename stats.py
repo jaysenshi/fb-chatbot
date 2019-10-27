@@ -127,7 +127,6 @@ def reply(input):
                         # if the time between two messages is too long, the messages
                         # are likely not realted anymore so we can just skip those cases
                         if m2.get("timestamp_ms")-m.get("timestamp_ms") <= MAX_TIME_DELTA_MS:
-                            #print(m.get('content'))
                             #todo: filter out "you set nickname", etc.
                             if score>best_score:
                                 best_replies = []
@@ -188,23 +187,18 @@ def reply(input):
     if best_score > 0:
         #reply = best_replies[randint(0,len(best_replies)-1)]
         reply = match_sentiment(input, best_replies)
-        #print('Input sentiment: ' + str(get_sentiment(input)))
         return reply
     else:
-        input_sentiment = get_sentiment(input)
+        normalized_input = expand_acronyms_phrase(input.lower().translate(string.punctuation))
+        if not normalized_input:
+            return ["please enter at least one word"]
+        input_sentiment = get_sentiment(normalized_input)
         if input_sentiment > upper_bound:
             return [pos[0]]
         elif input_sentiment < lower_bound:
             return [neg[0]]
         else:
             return [neutral[0]]
-
-        while True:
-            msg = msgs[randint(0,len(msgs)-1)]
-            if msg.get("sender_name",user) != user:
-                # todo: add way to tell user to include at least one word if we were given illegal input
-                return ["debug: not found"]
-                #return msg.get("content")
 
 if LOCAL_DEBUG:
     while True:
