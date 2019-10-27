@@ -163,9 +163,9 @@ def reply(input):
             curr_msg = expand_acronyms_phrase(m.get("content","").lower().translate(string.punctuation))
             if curr_msg:
                 if curr_msg not in counts.keys():
-                    counts["curr_msg"] = 0
+                    counts[curr_msg] = 0
                 else:
-                    counts["curr_msg"] += 1
+                    counts[curr_msg] += 1
 
     neg = None
     neutral = None
@@ -184,9 +184,6 @@ def reply(input):
             neg = (phrase, sentiment)
         elif not neutral:
             neutral = (phrase, sentiment)
-    print(pos)
-    print(neg)
-    print(neutral)
  
     if best_score > 0:
         #reply = best_replies[randint(0,len(best_replies)-1)]
