@@ -18,6 +18,7 @@ from random import randint
 MAX_TIME_DELTA_MS = 4 * 60 * 60 * 1000
 MAX_CONSECUTIVE_TIME_DELTA_MS = 5 * 1000
 COMMON_WORDS_FILE = "100_most_common_english_words.json"
+ACRONYMS_FILE = "acronyms.json"
 
 if len(sys.argv) != 3:
     print("usage: ./stats.py /path/to/message.json <local_debug_boolean>")
@@ -45,6 +46,14 @@ for i in range(len(common_words)):
     common_words_score[word] = score
 # 'the' has a score of .13 while 'many' has a score of .99
 
+# list of common acronyms
+acronyms_json = json.load(open(ACRONYMS_FILE))
+
+# clean acronyms
+acronyms = {}
+for key in acronyms_json.keys():
+    acronyms[key] = acronyms_json[key]['expanded']
+
 msgs = data["messages"]
 msgs.reverse()
 
@@ -70,6 +79,18 @@ user = data["participants"][1]["name"]
 # instead of numwords, use totalscore where each word is assigned a score based on "importance" (fixed?)
 # dictionary for converting i'm --> I'm --> im (fixed??)
 
+def expand_acronym(word):
+    if word in acronyms.keys():
+        return acronyms[word]
+    return word
+
+def expand_acronyms_phrase(words):
+    new_phrase = ""
+    words = words.split()
+    for word in words:
+        new_phrase = new_phrase + " " + expand_acronym(word)
+    return new_phrase
+
 def reply(input):
     words = input.split(" ")
     best_score = 0
@@ -80,11 +101,10 @@ def reply(input):
             score = 0
             for word in words:
                 # need to "normalize" the word and the message: all lowercase and get rid of punctuation
-                word_normalized = word.lower().translate(string.punctuation)
-                # print(word_normalized)
-                if not word_normalized.isalnum():
+                word_normalized = expand_acronym(word.lower().translate(string.punctuation))
+                if not word_normalized.isalnum() and word not in acronyms.keys():
                     continue
-                curr_content_normalized = m.get("content","").lower().translate(string.punctuation)
+                curr_content_normalized = expand_acronyms_phrase(m.get("content","").lower().translate(string.punctuation))
                 pattern = r"(^|[\W])"+word_normalized+r"($|[\W])" #todo: ignore special chars
                 if re.findall(pattern,curr_content_normalized):
                     #print(re.findall(pattern,m.get("content","")))
