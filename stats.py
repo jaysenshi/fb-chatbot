@@ -156,9 +156,9 @@ def reply2(input):
                 #return msg.get("content")
 
 async def chat(websocket, path):
-print("accepted client")
-async for msg in websocket:
-await websocket.send(reply2(msg))
+    print("accepted client")
+    async for msg in websocket:
+    await websocket.send(reply2(msg))
 
 start_server = websockets.serve(chat, "127.0.0.1", 8080)
 
