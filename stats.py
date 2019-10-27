@@ -13,8 +13,13 @@ import re
 import string
 from math import sqrt
 from random import randint
+<<<<<<< HEAD
 
 
+=======
+import asyncio
+#import websockets
+>>>>>>> c2848edf2d30b44d5f694d1bd70445581e2c154f
 
 # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './Test1-7c40fa5b9a66.json'
 
@@ -102,7 +107,7 @@ def reply(input):
                             #print(m.get('content'))
                             #todo: filter out "you set nickname", etc.
                             if score>best_score:
-                                best_replies = []
+
                             # get the message block that corresponds to this matched message
                             k = 1
                             next_msg = msgs[i + j + k]
@@ -116,6 +121,17 @@ def reply(input):
                                 next_msg = msgs[i + j + k]
                                 next_content = next_msg.get("content", "")
                             best_replies.append(msg_block)
+
+                            # if m2.get("content") != None:
+                            #     best_replies.append(m2.get("content"))
+                            # elif m2.get("sticker") != None:
+                            #     if m2.get("sticker").get("uri") == "messages/stickers_used/39178562_1505197616293642_5411344281094848512_n_369239263222822.png":
+                            #         best_replies.append("*Thumbs up*")
+                            #     else:
+                            #         best_replies.append("*Sends sticker*")
+                            # else:
+                            #     best_replies.append("*Sends pic*")
+
                             break
                 best_score = score
     if best_score>0:
@@ -132,6 +148,13 @@ def reply(input):
                 # todo: add way to tell user to include at least one word if we were given illegal input
                 return "debug: not found"
                 #return msg.get("content")
+while(True):
+    print(reply2(input()))
+#async def chat(websocket, path):
+#    print("accepted client")
+#    async for msg in websocket:
+#        await websocket.send(reply2(msg))
+
 
 if LOCAL_DEBUG:
     while True:
