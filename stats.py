@@ -73,9 +73,9 @@ def reply(input):
                 best_num_words = num_words
     if best_num_words>0:
         reply = best_reply[randint(0,len(best_reply)-1)]
-        print('Input sentiment: ' + str(get_sentiment(input)[0]) + ' Input sentiment mag: ' + str(get_sentiment(input)[1]))
+        print('Input sentiment: ' + str(get_sentiment(input)[0]))
         print(reply)
-        return ('Input sentiment: ' + str(get_sentiment(reply)[0]) + ' Input sentiment mag: ' + str(get_sentiment(reply)[1]))
+        return ('Reply sentiment: ' + str(get_sentiment(reply)[0]))
     else:
         while(True):
             msg = msgs[randint(0,len(msgs)-1)]
