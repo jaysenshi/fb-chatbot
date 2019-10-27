@@ -158,11 +158,9 @@ def reply2(input):
 async def chat(websocket, path):
     print("accepted client")
     async for msg in websocket:
-    await websocket.send(reply2(msg))
+        await websocket.send(reply2(msg))
 
 start_server = websockets.serve(chat, "127.0.0.1", 8080)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
-#while(True): #local ver
-#    print(reply2(input())) #TODO: serverify for tmrw
