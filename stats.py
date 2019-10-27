@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-# import os
-# # Imports the Google Cloud client library
-# from google.cloud import language
-# from google.cloud.language import enums
-# from google.cloud.language import types
+import os
+# Imports the Google Cloud client library
+from google.cloud import language
+from google.cloud.language import enums
+from google.cloud.language import types
 
 import json
 import sys
@@ -13,7 +13,7 @@ import string
 from math import sqrt
 from random import randint
 
-# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './Test1-7c40fa5b9a66.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './Test1-7c40fa5b9a66.json'
 
 MAX_TIME_DELTA_MS = 4 * 60 * 60 * 1000
 MAX_CONSECUTIVE_TIME_DELTA_MS = 5 * 1000
@@ -59,22 +59,44 @@ msgs.reverse()
 
 user = data["participants"][1]["name"]
 
-# def get_sentiment(text):
-#     # Instantiates a client
-#     client = language.LanguageServiceClient()
+def get_sentiment(text):
+    # Instantiates a client
+    client = language.LanguageServiceClient()
 
-#     # The text to analyze
-#     #text = u'I like to fuck bitches and get money!'
-#     document = types.Document(
-#         content=text,
-#         type=enums.Document.Type.PLAIN_TEXT)
+    # The text to analyze
+    #text = u'I like to fuck bitches and get money!'
+    document = types.Document(
+        content=text,
+        type=enums.Document.Type.PLAIN_TEXT)
 
-#     # Detects the sentiment of the text
-#     sentiment = client.analyze_sentiment(document=document).document_sentiment
+    # Detects the sentiment of the text
+    sentiment = client.analyze_sentiment(document=document).document_sentiment
 
-#     #print('Text: {}'.format(text))
-#     #print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
-#     return sentiment.score, sentiment.magnitude
+    #print('Text: {}'.format(text))
+    #print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
+    return sentiment.score, sentiment.magnitude
+
+# def match_sentiment(input, best_replies):
+#     reply_sentiments = []
+#     input_sentiment = get_sentiment(input)
+#     for i in best_replies:
+#         reply_sentiments.append(get_sentiment(i))
+#     sentiment_diff = [abs(a - input_sentiment) for a in reply_sentiments]
+#     matching_reply_key = sentiment_diff.index(min(sentiment_diff))
+#     return best_replies[matching_reply_key]
+
+def match_sentiment(input, best_replies):
+    reply_sentiments = []
+    input_sentiment = get_sentiment(input)
+    for reply in best_replies:
+        sentiments = []
+        for phrase in reply:
+            sentiments.append(get_sentiment(phrase))
+        avg_sentiment = sum(sentiments) / len(sentiments)
+        reply_sentiments.append(avg_sentiment)
+    sentiment_diff = [abs(a - input_sentiment) for a in reply_sentiments]
+    matching_reply_key = sentiment_diff.index(min(sentiment_diff))
+    return best_replies[matching_reply_key]
 
 # instead of numwords, use totalscore where each word is assigned a score based on "importance" (fixed?)
 # dictionary for converting i'm --> I'm --> im (fixed??)
@@ -147,11 +169,10 @@ def reply(input):
                             break
                 best_score = score
     if best_score > 0:
-        reply = best_replies[randint(0,len(best_replies)-1)]
-        # print('Input sentiment: ' + str(get_sentiment(input)[0]))
-        # print(reply)
-        # return ('Reply sentiment: ' + str(get_sentiment(reply)[0]))
-        # print (best_score)
+        # reply = best_replies[randint(0,len(best_replies)-1)]
+        reply = match_sentiment(input, best_replies)
+        print('Input sentiment: ' + str(get_sentiment(input)))
+        print(('Reply sentiment: ' + str(get_sentiment(reply))))
         return reply
     else:
         while True:
