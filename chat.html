@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>fb-chatbot</title>
 <link rel="stylesheet" type="text/css" href="/style.css">
 <script>
 var ws = new WebSocket("ws://127.0.0.1:8080/");
@@ -12,11 +13,6 @@ function send(data) {
 };
 ws.onmessage=append;
 ws.onopen=function(){ws.send(TEMP);};
-input.addEventListener("keyup", function(event) {
-	if (event.keyCode === 13) {
-		document.getElementById("send").click();
-	}
-});
 </script>
 </head>
 <body style="margin:0" text="white">
@@ -31,5 +27,13 @@ input.addEventListener("keyup", function(event) {
     <input id="input" type="text" />
     <button id="send" onclick="javascript:send(document.getElementById('input').value);">send</button>
 </div>
+<script>
+document.getElementById("input").addEventListener("keyup", function(event) {
+	if (event.keyCode === 13) {
+		document.getElementById("send").click();
+    document.getElementById("input").value="";
+	}
+});
+</script>
 </body>
 </html>
