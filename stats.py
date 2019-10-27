@@ -184,9 +184,6 @@ def reply(input):
             neg = (phrase, sentiment)
         elif not neutral:
             neutral = (phrase, sentiment)
-    #print(pos)
-    #print(neg)
-    #print(neutral)
 
     if best_score > 0:
         #reply = best_replies[randint(0,len(best_replies)-1)]
