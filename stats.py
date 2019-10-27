@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 
-# import os
-# # Imports the Google Cloud client library
-# from google.cloud import language
-# from google.cloud.language import enums
-# from google.cloud.language import types
+from google.cloud import language
+from google.cloud.language import enums
+from google.cloud.language import types
 
 
 import json
@@ -15,8 +13,9 @@ from math import sqrt
 from random import randint
 import asyncio
 import websockets
+import os
 
-# os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './Test1-7c40fa5b9a66.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './Test1-7c40fa5b9a66.json'
 
 MAX_TIME_DELTA_MS = 4 * 60 * 60 * 1000
 COMMON_WORDS_FILE = "100_most_common_english_words.json"
@@ -25,7 +24,7 @@ if len(sys.argv) != 2:
     print("usage: ./stats.py /path/to/message.json")
     sys.exit(0)
 
-data = json.loads(open(sys.argv[1]).read())
+data = None
 
 # list of 100 most common english words from wordfrequency.info
 common_words = json.load(open(COMMON_WORDS_FILE))
@@ -43,10 +42,9 @@ for i in range(len(common_words)):
 # 'the' has a score of .13 while 'many' has a score of .99
 # print(common_words_score)
 
-msgs = data["messages"]
-msgs.reverse()
+msgs = None
 
-user = data["participants"][1]["name"]
+user = None
 
 # def get_sentiment(text):
 #     # Instantiates a client
@@ -157,6 +155,15 @@ def reply2(input):
 
 async def chat(websocket, path):
     print("accepted client")
+    async for count in websocket:
+        global data
+        global msgs
+        global user
+        data = json.loads(open(os.getcwd()+"/message_"+count+".json").read())
+        msgs = data["messages"]
+        msgs.reverse()
+        user = data["participants"][1]["name"]
+        break
     async for msg in websocket:
         await websocket.send(reply2(msg))
 

@@ -1,15 +1,11 @@
 <html>
 <head>
-<script>
-var ws = new WebSocket("ws://127.0.0.1:8080/");
-ws.onmessage = function (event) {
-  document.getElementById("data").innerHTML = event.data;
-};
-</script>
 </head>
 <body bgcolor="black" style="margin:0" text="white">
-<input id="input" type="text">
-<button onclick="javascript:ws.send(document.getElementById('input').value);">send</button>
+<form method="post" enctype=multipart/form-data>
+<input type="file" name="json" />
+<input type="submit" value="upload" id="submit" />
+</form>
 <h1 id="data"></h1>
 </body>
 </html>
