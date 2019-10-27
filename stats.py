@@ -37,7 +37,7 @@ if not LOCAL_DEBUG:
     print("server mode init")
 else:
     print("local mode init")
-    data = json.loads(open(sys.argv[1]).read())
+    data = json.loads(open(sys.argv[2]).read())
     msgs = data["messages"]
     msgs.reverse()
     user = data["participants"][1]["name"]
@@ -105,12 +105,13 @@ def reply(input):
     words = input.split(" ")
     best_score = 0
     best_replies = []
+    counts = {} # keeps track of frequencies of each phrase
     for i in range(1,len(msgs)):
         m = msgs[i]
         if m.get("sender_name","") == user:
             score = 0
             for word in words:
-                # need to "normalize" the word and the message: all lowercase and get rid of punctuation
+                # need to "normalize" the word and the message: all lowercase and get rid of punctuation and replace acronyms
                 word_normalized = expand_acronym(word.lower().translate(string.punctuation))
                 if not word_normalized.isalnum() and word not in acronyms.keys():
                     continue
@@ -157,12 +158,50 @@ def reply(input):
                             best_replies.append(msg_block)
                             break
                 best_score = score
+        else:
+            # other user (the one we're trying to mimic)
+            curr_msg = expand_acronyms_phrase(m.get("content","").lower().translate(string.punctuation))
+            if curr_msg:
+                if curr_msg not in counts.keys():
+                    counts["curr_msg"] = 0
+                else:
+                    counts["curr_msg"] += 1
+
+    neg = None
+    neutral = None
+    pos = None
+    # bounds for neutral sentiment
+    upper_bound = .2 
+    lower_bound = -.2
+
+    for phrase, frequency in sorted(counts.items(), key=lambda item: item[1], reverse=True):
+        sentiment = get_sentiment(phrase)
+        if neg and pos and neutral:
+            break
+        if sentiment > upper_bound and not pos:
+            pos = (phrase, sentiment)
+        elif sentiment < lower_bound and not neg:
+            neg = (phrase, sentiment)
+        elif not neutral:
+            neutral = (phrase, sentiment)
+    print(pos)
+    print(neg)
+    print(neutral)
+ 
     if best_score > 0:
         #reply = best_replies[randint(0,len(best_replies)-1)]
         reply = match_sentiment(input, best_replies)
         #print('Input sentiment: ' + str(get_sentiment(input)))
         return reply
     else:
+        input_sentiment = get_sentiment(input)
+        if input_sentiment > upper_bound:
+            return [pos[0]]
+        elif input_sentiment < lower_bound:
+            return [neg[0]]
+        else:
+            return [neutral[0]]
+
         while True:
             msg = msgs[randint(0,len(msgs)-1)]
             if msg.get("sender_name",user) != user:
