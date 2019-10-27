@@ -13,17 +13,36 @@ import json
 import sys
 import re
 import string
+from math import sqrt
 from random import randint
 
 # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './Test1-7c40fa5b9a66.json'
 
 MAX_TIME_DELTA_MS = 4 * 60 * 60 * 1000
+COMMON_WORDS_FILE = "100_most_common_english_words.json"
 
 if len(sys.argv) != 2:
     print("usage: ./stats.py /path/to/message.json")
     sys.exit(0)
 
 data = json.loads(open(sys.argv[1]).read())
+
+# list of 100 most common english words from wordfrequency.info
+common_words = json.load(open(COMMON_WORDS_FILE))
+
+# need to clean common_words
+common_words_score = {}
+frequencies = [common_words[i]['Frequency'] for i in range(len(common_words))]
+lowest_freq = min(frequencies)
+for i in range(len(common_words)):
+    word = common_words[i]['Word']
+    freq = common_words[i]['Frequency']
+    ratio = freq / lowest_freq
+    score = sqrt(1 / ratio)
+    common_words_score[word] = score
+# 'the' has a score of .13 while 'many' has a score of .99
+# print(common_words_score)
+
 msgs = data["messages"]
 msgs.reverse()
 
@@ -47,7 +66,7 @@ user = data["participants"][1]["name"]
 #     return sentiment.score, sentiment.magnitude
 
 # instead of numwords, use totalscore where each word is assigned a score based on "importance"
-# dictionary for converting i'm --> I'm --> im
+# dictionary for converting i'm --> I'm --> im (fixed??)
 
 def reply(input):
     words = input.split(" ")

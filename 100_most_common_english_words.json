@@ -1,0 +1,702 @@
+[
+  {
+    "Rank": 1,
+    "Word": "the",
+    "Part of speech": "a",
+    "Frequency": 22038615,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 2,
+    "Word": "be",
+    "Part of speech": "v",
+    "Frequency": 12545825,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 3,
+    "Word": "and",
+    "Part of speech": "c",
+    "Frequency": 10741073,
+    "Dispersion": 0.99
+  },
+  {
+    "Rank": 4,
+    "Word": "of",
+    "Part of speech": "i",
+    "Frequency": 10343885,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 5,
+    "Word": "a",
+    "Part of speech": "a",
+    "Frequency": 10144200,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 6,
+    "Word": "in",
+    "Part of speech": "i",
+    "Frequency": 6996437,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 7,
+    "Word": "to",
+    "Part of speech": "t",
+    "Frequency": 6332195,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 8,
+    "Word": "have",
+    "Part of speech": "v",
+    "Frequency": 4303955,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 9,
+    "Word": "to",
+    "Part of speech": "i",
+    "Frequency": 3856916,
+    "Dispersion": 0.99
+  },
+  {
+    "Rank": 10,
+    "Word": "it",
+    "Part of speech": "p",
+    "Frequency": 3872477,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 11,
+    "Word": "I",
+    "Part of speech": "p",
+    "Frequency": 3978265,
+    "Dispersion": 0.93
+  },
+  {
+    "Rank": 12,
+    "Word": "that",
+    "Part of speech": "c",
+    "Frequency": 3430996,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 13,
+    "Word": "for",
+    "Part of speech": "i",
+    "Frequency": 3281454,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 14,
+    "Word": "you",
+    "Part of speech": "p",
+    "Frequency": 3081151,
+    "Dispersion": 0.92
+  },
+  {
+    "Rank": 15,
+    "Word": "he",
+    "Part of speech": "p",
+    "Frequency": 2909254,
+    "Dispersion": 0.94
+  },
+  {
+    "Rank": 16,
+    "Word": "with",
+    "Part of speech": "i",
+    "Frequency": 2683014,
+    "Dispersion": 0.99
+  },
+  {
+    "Rank": 17,
+    "Word": "on",
+    "Part of speech": "i",
+    "Frequency": 2485306,
+    "Dispersion": 0.99
+  },
+  {
+    "Rank": 18,
+    "Word": "do",
+    "Part of speech": "v",
+    "Frequency": 2573587,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 19,
+    "Word": "say",
+    "Part of speech": "v",
+    "Frequency": 1915138,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 20,
+    "Word": "this",
+    "Part of speech": "d",
+    "Frequency": 1885366,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 21,
+    "Word": "they",
+    "Part of speech": "p",
+    "Frequency": 1865580,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 22,
+    "Word": "at",
+    "Part of speech": "i",
+    "Frequency": 1767638,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 23,
+    "Word": "but",
+    "Part of speech": "c",
+    "Frequency": 1776767,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 24,
+    "Word": "we",
+    "Part of speech": "p",
+    "Frequency": 1820935,
+    "Dispersion": 0.94
+  },
+  {
+    "Rank": 25,
+    "Word": "his",
+    "Part of speech": "a",
+    "Frequency": 1801708,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 26,
+    "Word": "from",
+    "Part of speech": "i",
+    "Frequency": 1635914,
+    "Dispersion": 0.99
+  },
+  {
+    "Rank": 27,
+    "Word": "that",
+    "Part of speech": "d",
+    "Frequency": 1712406,
+    "Dispersion": 0.94
+  },
+  {
+    "Rank": 28,
+    "Word": "not",
+    "Part of speech": "x",
+    "Frequency": 1638830,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 29,
+    "Word": "n't",
+    "Part of speech": "x",
+    "Frequency": 1619007,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 30,
+    "Word": "by",
+    "Part of speech": "i",
+    "Frequency": 1490548,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 31,
+    "Word": "she",
+    "Part of speech": "p",
+    "Frequency": 1484869,
+    "Dispersion": 0.91
+  },
+  {
+    "Rank": 32,
+    "Word": "or",
+    "Part of speech": "c",
+    "Frequency": 1379320,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 33,
+    "Word": "as",
+    "Part of speech": "c",
+    "Frequency": 1296879,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 34,
+    "Word": "what",
+    "Part of speech": "d",
+    "Frequency": 1181023,
+    "Dispersion": 0.94
+  },
+  {
+    "Rank": 35,
+    "Word": "go",
+    "Part of speech": "v",
+    "Frequency": 1151045,
+    "Dispersion": 0.93
+  },
+  {
+    "Rank": 36,
+    "Word": "their",
+    "Part of speech": "a",
+    "Frequency": 1083029,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 37,
+    "Word": "can",
+    "Part of speech": "v",
+    "Frequency": 1022775,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 38,
+    "Word": "who",
+    "Part of speech": "p",
+    "Frequency": 1018283,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 39,
+    "Word": "get",
+    "Part of speech": "v",
+    "Frequency": 992596,
+    "Dispersion": 0.94
+  },
+  {
+    "Rank": 40,
+    "Word": "if",
+    "Part of speech": "c",
+    "Frequency": 933542,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 41,
+    "Word": "would",
+    "Part of speech": "v",
+    "Frequency": 925515,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 42,
+    "Word": "her",
+    "Part of speech": "a",
+    "Frequency": 969591,
+    "Dispersion": 0.91
+  },
+  {
+    "Rank": 43,
+    "Word": "all",
+    "Part of speech": "d",
+    "Frequency": 892102,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 44,
+    "Word": "my",
+    "Part of speech": "a",
+    "Frequency": 919821,
+    "Dispersion": 0.93
+  },
+  {
+    "Rank": 45,
+    "Word": "make",
+    "Part of speech": "v",
+    "Frequency": 857168,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 46,
+    "Word": "about",
+    "Part of speech": "i",
+    "Frequency": 874406,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 47,
+    "Word": "know",
+    "Part of speech": "v",
+    "Frequency": 892535,
+    "Dispersion": 0.93
+  },
+  {
+    "Rank": 48,
+    "Word": "will",
+    "Part of speech": "v",
+    "Frequency": 824568,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 49,
+    "Word": "as",
+    "Part of speech": "i",
+    "Frequency": 829018,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 50,
+    "Word": "up",
+    "Part of speech": "r",
+    "Frequency": 795534,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 51,
+    "Word": "one",
+    "Part of speech": "m",
+    "Frequency": 768232,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 52,
+    "Word": "time",
+    "Part of speech": "n",
+    "Frequency": 764657,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 53,
+    "Word": "there",
+    "Part of speech": "e",
+    "Frequency": 784528,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 54,
+    "Word": "year",
+    "Part of speech": "n",
+    "Frequency": 769254,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 55,
+    "Word": "so",
+    "Part of speech": "r",
+    "Frequency": 756550,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 56,
+    "Word": "think",
+    "Part of speech": "v",
+    "Frequency": 772787,
+    "Dispersion": 0.91
+  },
+  {
+    "Rank": 57,
+    "Word": "when",
+    "Part of speech": "c",
+    "Frequency": 678626,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 58,
+    "Word": "which",
+    "Part of speech": "d",
+    "Frequency": 685982,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 59,
+    "Word": "them",
+    "Part of speech": "p",
+    "Frequency": 677870,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 60,
+    "Word": "some",
+    "Part of speech": "d",
+    "Frequency": 674193,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 61,
+    "Word": "me",
+    "Part of speech": "p",
+    "Frequency": 709623,
+    "Dispersion": 0.92
+  },
+  {
+    "Rank": 62,
+    "Word": "people",
+    "Part of speech": "n",
+    "Frequency": 691468,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 63,
+    "Word": "take",
+    "Part of speech": "v",
+    "Frequency": 670745,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 64,
+    "Word": "out",
+    "Part of speech": "r",
+    "Frequency": 678603,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 65,
+    "Word": "into",
+    "Part of speech": "i",
+    "Frequency": 668172,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 66,
+    "Word": "just",
+    "Part of speech": "r",
+    "Frequency": 677711,
+    "Dispersion": 0.94
+  },
+  {
+    "Rank": 67,
+    "Word": "see",
+    "Part of speech": "v",
+    "Frequency": 663645,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 68,
+    "Word": "him",
+    "Part of speech": "p",
+    "Frequency": 677707,
+    "Dispersion": 0.92
+  },
+  {
+    "Rank": 69,
+    "Word": "your",
+    "Part of speech": "a",
+    "Frequency": 659622,
+    "Dispersion": 0.94
+  },
+  {
+    "Rank": 70,
+    "Word": "come",
+    "Part of speech": "v",
+    "Frequency": 628254,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 71,
+    "Word": "could",
+    "Part of speech": "v",
+    "Frequency": 617932,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 72,
+    "Word": "now",
+    "Part of speech": "r",
+    "Frequency": 605997,
+    "Dispersion": 0.94
+  },
+  {
+    "Rank": 73,
+    "Word": "than",
+    "Part of speech": "c",
+    "Frequency": 579757,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 74,
+    "Word": "like",
+    "Part of speech": "i",
+    "Frequency": 568850,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 75,
+    "Word": "other",
+    "Part of speech": "j",
+    "Frequency": 547799,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 76,
+    "Word": "how",
+    "Part of speech": "r",
+    "Frequency": 538893,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 77,
+    "Word": "then",
+    "Part of speech": "r",
+    "Frequency": 543977,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 78,
+    "Word": "its",
+    "Part of speech": "a",
+    "Frequency": 539719,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 79,
+    "Word": "our",
+    "Part of speech": "a",
+    "Frequency": 525107,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 80,
+    "Word": "two",
+    "Part of speech": "m",
+    "Frequency": 511027,
+    "Dispersion": 0.99
+  },
+  {
+    "Rank": 81,
+    "Word": "more",
+    "Part of speech": "r",
+    "Frequency": 517536,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 82,
+    "Word": "these",
+    "Part of speech": "d",
+    "Frequency": 513864,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 83,
+    "Word": "want",
+    "Part of speech": "v",
+    "Frequency": 514972,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 84,
+    "Word": "way",
+    "Part of speech": "n",
+    "Frequency": 470401,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 85,
+    "Word": "look",
+    "Part of speech": "v",
+    "Frequency": 491707,
+    "Dispersion": 0.93
+  },
+  {
+    "Rank": 86,
+    "Word": "first",
+    "Part of speech": "m",
+    "Frequency": 463566,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 87,
+    "Word": "also",
+    "Part of speech": "r",
+    "Frequency": 464606,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 88,
+    "Word": "new",
+    "Part of speech": "j",
+    "Frequency": 435993,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 89,
+    "Word": "because",
+    "Part of speech": "c",
+    "Frequency": 438539,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 90,
+    "Word": "day",
+    "Part of speech": "n",
+    "Frequency": 432773,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 91,
+    "Word": "more",
+    "Part of speech": "d",
+    "Frequency": 420170,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 92,
+    "Word": "use",
+    "Part of speech": "v",
+    "Frequency": 420781,
+    "Dispersion": 0.96
+  },
+  {
+    "Rank": 93,
+    "Word": "no",
+    "Part of speech": "a",
+    "Frequency": 402222,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 94,
+    "Word": "man",
+    "Part of speech": "n",
+    "Frequency": 409760,
+    "Dispersion": 0.95
+  },
+  {
+    "Rank": 95,
+    "Word": "find",
+    "Part of speech": "v",
+    "Frequency": 395203,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 96,
+    "Word": "here",
+    "Part of speech": "r",
+    "Frequency": 412315,
+    "Dispersion": 0.93
+  },
+  {
+    "Rank": 97,
+    "Word": "thing",
+    "Part of speech": "n",
+    "Frequency": 400724,
+    "Dispersion": 0.94
+  },
+  {
+    "Rank": 98,
+    "Word": "give",
+    "Part of speech": "v",
+    "Frequency": 384503,
+    "Dispersion": 0.98
+  },
+  {
+    "Rank": 99,
+    "Word": "many",
+    "Part of speech": "d",
+    "Frequency": 385348,
+    "Dispersion": 0.97
+  },
+  {
+    "Rank": 100,
+    "Word": "well",
+    "Part of speech": "r",
+    "Frequency": 411776,
+    "Dispersion": 0.91
+  }
+]
