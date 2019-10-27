@@ -69,12 +69,14 @@ def get_sentiment(text):
         content=text,
         type=enums.Document.Type.PLAIN_TEXT)
 
-    # Detects the sentiment of the text
-    sentiment = client.analyze_sentiment(document=document).document_sentiment
-
+    try:
+        # Detects the sentiment of the text
+        sentiment = client.analyze_sentiment(document=document).document_sentiment
+    except:
+        return 0
     #print('Text: {}'.format(text))
     #print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
-    return sentiment.score, sentiment.magnitude
+    return sentiment.score
 
 # def match_sentiment(input, best_replies):
 #     reply_sentiments = []
@@ -91,7 +93,7 @@ def match_sentiment(input, best_replies):
     for reply in best_replies:
         sentiments = []
         for phrase in reply:
-            sentiments.append(get_sentiment(phrase))
+            sentiments.append(get_sentiment(phrase) + randint(-100, 100) / 1000)
         avg_sentiment = sum(sentiments) / len(sentiments)
         reply_sentiments.append(avg_sentiment)
     sentiment_diff = [abs(a - input_sentiment) for a in reply_sentiments]
@@ -172,7 +174,7 @@ def reply(input):
         # reply = best_replies[randint(0,len(best_replies)-1)]
         reply = match_sentiment(input, best_replies)
         print('Input sentiment: ' + str(get_sentiment(input)))
-        print(('Reply sentiment: ' + str(get_sentiment(reply))))
+        #print(('Reply sentiment: ' + str(get_sentiment(reply))))
         return reply
     else:
         while True:
