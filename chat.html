@@ -3,9 +3,14 @@
 <link rel="stylesheet" type="text/css" href="/style.css">
 <script>
 var ws = new WebSocket("ws://127.0.0.1:8080/");
-ws.onmessage = function (event) {
+function append(event) {
   document.getElementById("data").innerHTML = document.getElementById("data").innerHTML + "<li>" + event.data + "</li>";
 };
+function send(data) {
+  ws.send(data);
+  document.getElementById("data").innerHTML = document.getElementById("data").innerHTML + "<li>You: " + data + "</li>";
+};
+ws.onmessage=append;
 ws.onopen=function(){ws.send(TEMP);};
 </script>
 </head>
@@ -14,11 +19,12 @@ ws.onopen=function(){ws.send(TEMP);};
     <div id="chatLog">
       <ul id="data">
         <li>Hello!</li>
-      </ul></div>
+      </ul>
+    </div>
 </div>
 <div id="sendWindow">
     <input id="input" type="text" />
-    <button id="send" onclick="javascript:ws.send(document.getElementById('input').value);">send</button>
+    <button id="send" onclick="javascript:send(document.getElementById('input').value);">send</button>
 </div>
 </body>
 </html>
