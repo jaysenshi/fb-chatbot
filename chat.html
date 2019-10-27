@@ -3,7 +3,7 @@
 <script>
 var ws = new WebSocket("ws://127.0.0.1:8080/");
 ws.onmessage = function (event) {
-  document.getElementById("data").innerHTML = document.getElementById("data").innerHTML + event.data;
+  document.getElementById("data").innerHTML = document.getElementById("data").innerHTML + "<br>" + event.data;
 };
 ws.onopen=function(){ws.send(TEMP);};
 </script>

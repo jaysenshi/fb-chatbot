@@ -16,24 +16,27 @@ import os
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './Test1-7c40fa5b9a66.json'
 
 MAX_TIME_DELTA_MS = 4 * 60 * 60 * 1000
-MAX_CONSECUTIVE_TIME_DELTA_MS = 5 * 1000
+MAX_CONSECUTIVE_TIME_DELTA_MS = 30 * 1000
 COMMON_WORDS_FILE = "100_most_common_english_words.json"
 ACRONYMS_FILE = "acronyms.json"
 
-if len(sys.argv) != 3:
+"""if len(sys.argv) != 3:
     print("usage: ./stats.py /path/to/message.json <local_debug_boolean>")
     print("set <local_debug_boolean> to true for local debugging, anything else otherwise")
     sys.exit(0)
+"""
 
 data = None
 msgs = None
 user = None
 
-LOCAL_DEBUG = True if sys.argv[2] == "true" or sys.argv[2] == "t" else False
+LOCAL_DEBUG = True if sys.argv[1] == "true" or sys.argv[1] == "t" else False
 if not LOCAL_DEBUG:
     import asyncio
     import websockets
+    print("server mode init")
 else:
+    print("local mode init")
     data = json.loads(open(sys.argv[1]).read())
     msgs = data["messages"]
     msgs.reverse()
@@ -67,7 +70,6 @@ def get_sentiment(text):
     document = types.Document(
         content=text,
         type=enums.Document.Type.PLAIN_TEXT)
-
     try:
         sentiment = client.analyze_sentiment(document=document).document_sentiment
     except:
@@ -145,7 +147,8 @@ def reply(input):
                                     else:
                                         next_content = "*Sends sticker*"
                                 elif not next_content:
-                                    next_content = "*Sends pic*""""
+                                    next_content = "*Sends pic*"
+                                    """
                                 k += 1
                                 m2 = next_msg
                                 next_msg = msgs[i + j + k]
@@ -155,16 +158,16 @@ def reply(input):
                             break
                 best_score = score
     if best_score > 0:
-        # reply = best_replies[randint(0,len(best_replies)-1)]
+        #reply = best_replies[randint(0,len(best_replies)-1)]
         reply = match_sentiment(input, best_replies)
-        print('Input sentiment: ' + str(get_sentiment(input)))
+        #print('Input sentiment: ' + str(get_sentiment(input)))
         return reply
     else:
         while True:
             msg = msgs[randint(0,len(msgs)-1)]
             if msg.get("sender_name",user) != user:
                 # todo: add way to tell user to include at least one word if we were given illegal input
-                return "debug: not found"
+                return ["debug: not found"]
                 #return msg.get("content")
 
 if LOCAL_DEBUG:
