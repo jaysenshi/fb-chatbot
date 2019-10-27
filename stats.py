@@ -224,6 +224,7 @@ async def chat(websocket, path):
     async for msg in websocket:
         result = reply(msg)
         for phrase in result:
+            phrase = data["participants"][0]["name"].split(" ")[0] + ' bot:  ' + phrase
             await websocket.send(phrase)
 
 start_server = websockets.serve(chat, "127.0.0.1", 8080)
