@@ -1,9 +1,11 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 import json
 import sys
 import re
 from random import randint
+import asyncio
+import websockets
 
 MAX_TIME_DELTA_MS = 4 * 60 * 60 * 1000
 
@@ -51,5 +53,15 @@ def reply(input):
                 return "debug: not found"
                 #return msg.get("content")
 
-while(True):
-    print(reply(input())) #TODO: serverify for tmrw
+async def chat(websocket, path):
+    print("accepted client")
+    async for msg in websocket:
+        await websocket.send(reply(msg))
+
+start_server = websockets.serve(chat, "127.0.0.1", 8080)
+
+asyncio.get_event_loop().run_until_complete(start_server)
+asyncio.get_event_loop().run_forever()
+
+#while(True): #local version
+#    print(reply(input()))
