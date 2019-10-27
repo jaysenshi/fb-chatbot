@@ -1,9 +1,20 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+
+import os
+
+
+# Imports the Google Cloud client library
+from google.cloud import language
+from google.cloud.language import enums
+from google.cloud.language import types
+
 
 import json
 import sys
 import re
 from random import randint
+
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './Test1-7c40fa5b9a66.json'
 
 MAX_TIME_DELTA_MS = 4 * 60 * 60 * 1000
 
@@ -16,6 +27,24 @@ msgs = data["messages"]
 msgs.reverse()
 
 user = data["participants"][1]["name"]
+
+def get_sentiment(text):
+    # Instantiates a client
+    client = language.LanguageServiceClient()
+
+    # The text to analyze
+    #text = u'I like to fuck bitches and get money!'
+    document = types.Document(
+        content=text,
+        type=enums.Document.Type.PLAIN_TEXT)
+
+    # Detects the sentiment of the text
+    sentiment = client.analyze_sentiment(document=document).document_sentiment
+
+    #print('Text: {}'.format(text))
+    #print('Sentiment: {}, {}'.format(sentiment.score, sentiment.magnitude))
+    return sentiment.score, sentiment.magnitude
+
 
 def reply(input):
     words = input.split(" ")
@@ -43,7 +72,10 @@ def reply(input):
                             break
                 best_num_words = num_words
     if best_num_words>0:
-        return best_reply[randint(0,len(best_reply)-1)]
+        reply = best_reply[randint(0,len(best_reply)-1)]
+        print('Input sentiment: ' + str(get_sentiment(input)[0]) + ' Input sentiment mag: ' + str(get_sentiment(input)[1]))
+        print(reply)
+        return ('Input sentiment: ' + str(get_sentiment(reply)[0]) + ' Input sentiment mag: ' + str(get_sentiment(reply)[1]))
     else:
         while(True):
             msg = msgs[randint(0,len(msgs)-1)]
@@ -53,3 +85,4 @@ def reply(input):
 
 while(True):
     print(reply(input())) #TODO: serverify for tmrw
+
