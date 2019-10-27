@@ -6,20 +6,12 @@
 # from google.cloud.language import enums
 # from google.cloud.language import types
 
-
 import json
 import sys
 import re
 import string
 from math import sqrt
 from random import randint
-<<<<<<< HEAD
-
-
-=======
-import asyncio
-#import websockets
->>>>>>> c2848edf2d30b44d5f694d1bd70445581e2c154f
 
 # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './Test1-7c40fa5b9a66.json'
 
@@ -107,34 +99,34 @@ def reply(input):
                             #print(m.get('content'))
                             #todo: filter out "you set nickname", etc.
                             if score>best_score:
-
+                                best_replies = []
                             # get the message block that corresponds to this matched message
-                            k = 1
+                            msg_block = []
+                            
                             next_msg = msgs[i + j + k]
-                            next_content = next_msg.get("content", "")
-                            msg_block = [m2.get("content", "")]
-                            while next_content and next_msg.get("sender_name", "") != user \
+                            next_content = None
+                            k = 0
+                            
+                            while next_msg.get("sender_name", "") != user \
                                 and next_msg.get("timestamp_ms") - m2.get("timestamp_ms") < MAX_CONSECUTIVE_TIME_DELTA_MS:
-                                msg_block.append(next_content)
+                                if next_msg.get("content"):
+                                    next_content = next_msg.get("content")
+                                elif not next_content and m2.get("sticker"):
+                                    if m2.get("sticker").get("uri") == "messages/stickers_used/39178562_1505197616293642_5411344281094848512_n_369239263222822.png":
+                                        next_content = "*Thumbs up*"
+                                    else:
+                                        next_content = "*Sends sticker*"
+                                elif not next_content:
+                                    next_content = "*Sends pic*"
                                 k += 1
                                 m2 = next_msg
                                 next_msg = msgs[i + j + k]
-                                next_content = next_msg.get("content", "")
+                                msg_block.append(next_content)
+
                             best_replies.append(msg_block)
-
-                            # if m2.get("content") != None:
-                            #     best_replies.append(m2.get("content"))
-                            # elif m2.get("sticker") != None:
-                            #     if m2.get("sticker").get("uri") == "messages/stickers_used/39178562_1505197616293642_5411344281094848512_n_369239263222822.png":
-                            #         best_replies.append("*Thumbs up*")
-                            #     else:
-                            #         best_replies.append("*Sends sticker*")
-                            # else:
-                            #     best_replies.append("*Sends pic*")
-
                             break
                 best_score = score
-    if best_score>0:
+    if best_score > 0:
         reply = best_replies[randint(0,len(best_replies)-1)]
         # print('Input sentiment: ' + str(get_sentiment(input)[0]))
         # print(reply)
@@ -149,7 +141,7 @@ def reply(input):
                 return "debug: not found"
                 #return msg.get("content")
 while(True):
-    print(reply2(input()))
+    print(reply(input()))
 #async def chat(websocket, path):
 #    print("accepted client")
 #    async for msg in websocket:
