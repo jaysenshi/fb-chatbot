@@ -1,0 +1,38 @@
+body{
+    background-color: black;
+}
+
+#chatBox {
+    margin-left: 30%;
+    height: 400px;
+    width: 40%;
+    border: 3px solid white;
+}
+
+#chatLog{
+    margin: 5px;
+    overflow-y: auto;
+}
+
+#sendWindow {
+    position: absolute;
+    top: 450px;
+    left: 20%;
+    width: 60%;
+}
+
+#input {
+    position: relative;
+    left: 25%;
+    width: 35%;
+}
+
+#send {
+    position: relative;
+    left: 25%;
+}
+
+#uploadButton {
+    position: relative;
+    left: 25%;
+}

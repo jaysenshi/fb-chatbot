@@ -10,6 +10,10 @@ count = 0
 def index():
     return open(os.getcwd()+"/index.html").read()
 
+@app.route('/style.css')
+def style():
+    return open(os.getcwd()+"/style.css").read()
+
 @app.route('/chat/<count>')
 def chat(count):
     return open(os.getcwd()+"/chat.html").read().replace("TEMP",str(count))
