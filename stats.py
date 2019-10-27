@@ -14,7 +14,7 @@ import string
 from math import sqrt
 from random import randint
 import asyncio
-import websockets
+#import websockets
 
 # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './Test1-7c40fa5b9a66.json'
 
@@ -138,7 +138,15 @@ def reply2(input):
                             #todo: filter out "you set nickname", etc.
                             if score>best_score:
                                 best_replies = []
-                            best_replies.append(m2.get("content"))
+                            if m2.get("content") != None:
+                                best_replies.append(m2.get("content"))
+                            elif m2.get("sticker") != None:
+                                if m2.get("sticker").get("uri") == "messages/stickers_used/39178562_1505197616293642_5411344281094848512_n_369239263222822.png":
+                                    best_replies.append("*Thumbs up*")
+                                else:
+                                    best_replies.append("*Sends sticker*")
+                            else:
+                                best_replies.append("*Sends pic*")
                             break
                 best_score = score
     if best_score>0:
@@ -154,13 +162,14 @@ def reply2(input):
             if msg.get("sender_name",user) != user:
                 return "debug: not found"
                 #return msg.get("content")
+while(True):
+    print(reply2(input()))
+#async def chat(websocket, path):
+#    print("accepted client")
+#    async for msg in websocket:
+#        await websocket.send(reply2(msg))
 
-async def chat(websocket, path):
-    print("accepted client")
-    async for msg in websocket:
-        await websocket.send(reply2(msg))
+#start_server = websockets.serve(chat, "127.0.0.1", 8080)
 
-start_server = websockets.serve(chat, "127.0.0.1", 8080)
-
-asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
+#asyncio.get_event_loop().run_until_complete(start_server)
+#asyncio.get_event_loop().run_forever()
